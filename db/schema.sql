@@ -1,0 +1,3 @@
+-- Active: 1703447745794@@127.0.0.1@3306@world
+DROP DATABASE IF EXISTS user_db;
+CREATE DATABASE user_db;
