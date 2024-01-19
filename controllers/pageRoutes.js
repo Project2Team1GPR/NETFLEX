@@ -47,15 +47,6 @@ router.get('/postdetails', (req, res) => {
   res.render('blogPostDetails');
 });
 
-// create blog post
-router.get('/createpost', (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-    return;
-  }
-  res.render('createBlogPost');
-});
-
 // dashboard
 router.get('/dashboard', (req, res) => {
   if (!req.session.logged_in) {
@@ -65,12 +56,17 @@ router.get('/dashboard', (req, res) => {
   res.render('dashboard');
 });
 
-// sign-up
-router.get('/signup', (req, res) => {
+// create blog post
+router.get('/createpost', (req, res) => {
   if (!req.session.logged_in) {
     res.redirect('/login');
     return;
   }
+  res.render('createBlogPost');
+});
+
+// sign-up
+router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
