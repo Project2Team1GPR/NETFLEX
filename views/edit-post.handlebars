@@ -1,0 +1,21 @@
+<section class="card">
+  <header>Update Post</header>
+  <div class="card-body">
+    <form id="update-post">
+      <input type="hidden" value="{{post.id}}" id="postId">
+      <div class="card-body">
+        <label for="postTitle">Title:</label>
+        <input type="text" id="postTitle" name="postTitle" value="{{post.title}}">
+      </div>
+      <div class="card-body">
+        <textarea id="postContent">{{post.contents}}</textarea>
+      </div>
+      <button class="card-body" type="submit">Edit Post</button>
+      <button class="card-body" type="button" id="delete">Delete Post</button>
+    </form>
+  </div>
+</section>
+
+
+<script src="/js/updatePost.js"></script>
+<script src="/js/deletePost.js"></script>

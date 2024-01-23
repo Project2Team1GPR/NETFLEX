@@ -1,0 +1,24 @@
+<section class="card-body">
+  <button class="card-body"><a href="/dashboard/create">Create Post</a></button>
+</section>
+
+<!-- Display Posts -->
+{{#if posts.length}}
+
+  {{#each posts as |post|}}
+<section class="card">
+  <a href="/dashboard/edit/{{post.id}}">
+    <header>{{post.title}}</header>
+    <p>Posted on: {{format_date post.createdAt}}</p>
+  </a>
+</section>
+{{/each}}
+
+{{else}}
+<section class="card">
+  <div class="card-body">
+    <p>No posts yet.</p>
+    </div>
+  </section>
+{{/if}}
+</div>
