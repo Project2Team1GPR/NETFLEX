@@ -1,82 +1,116 @@
-const router = require('express').Router();
-const { User } = require('../models');
-const withAuth = require('../utils/auth');
+const router = require("express").Router();
+const { Post, Comment, User } = require("../models");
+const withAuth = require("../utils/auth");
 
-router.get('/', withAuth, async (req, res) => {
+// get all blog posts for homepage
+router.get("/", async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-      order: [['name', 'ASC']],
-    });
+    const dbPostData = await Post.findAll(
+      {
+      // include: [{ model: User, attributes: ["username"] }],
+    //   order: [["createdAt", "DESC"]],
+    }
+    );
 
-    const users = userData.map((project) => project.get({ plain: true }));
-
-    res.render('homepage', {
-      users,
-      logged_in: req.session.logged_in,
+    const posts = dbPostData.map((post) => post.get({ plain: true }));
+    console.log("BLOGS", posts);
+    res.render("homepage", {
+      posts,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
 
-router.get('/login', (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/');
-    return;
-  }
+// GET one blog post
+router.get("/post/:id", async (req, res) => {
+  try {
+    const dbPostData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+        {
+          model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ["username"],
+            },
+          ],
+        },
+      ],
+    });
 
-  res.render('login');
+    const post = dbPostData.get({ plain: true });
+    console.log("LOOK", post);
+    res.render("post", { post, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
-// blog feed page
-router.get('/blogfeed', (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-    return;
+// Get Dashboard data.. user's blog posts
+router.get("/dashboard", withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+      order: [["createdAt", "DESC"]],
+    });
+
+    const posts = postData.map((dashboard) => dashboard.get({ plain: true }));
+
+    console.log(posts);
+    res.render("dashboard", { posts, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
-  res.render('blogFeed');
 });
 
-// blog post details
-router.get('/postdetails', (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-    return;
-  }
-  res.render('blogPostDetails');
+// Get form for user to create a post
+router.get("/dashboard/create", async (req, res) => {
+  res.render("create-post", { loggedIn: req.session.loggedIn });
 });
 
-// dashboard
-router.get('/dashboard', (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-    return;
+// Get form to edit post
+router.get("/dashboard/edit/:id", async (req, res) => {
+  try {
+    const dbPostData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+      ],
+    });
+
+    if (!dbPostData) {
+      res.status(404).json({ message: "Post not found" });
+      return;
+    }
+
+    const post = dbPostData.get({ plain: true });
+    res.render("edit-post", { post, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
-  res.render('dashboard');
 });
 
-// create blog post
-router.get('/createpost', (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/login');
+// Login route
+router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
     return;
   }
-  res.render('createBlogPost');
-});
-
-// sign-up
-router.get('/signup', (req, res) => {
-  res.render('signup');
-});
-
-// user profile
-router.get('/profile', (req, res) => {
-  if (!req.session.logged_in) {
-    res.redirect('/login');
-    return;
-  }
-  res.render('userProfile');
+  res.render("login");
 });
 
 module.exports = router;

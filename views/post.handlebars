@@ -1,0 +1,56 @@
+<section class="card">
+  <header>
+    <h2>{{post.title}}</h2>
+    <p>Date Posted: {{format_date post.createdAt}}</p>
+    <p>By: {{post.user.username}}</p>
+  </header>
+  <div class="card-body">
+
+    <!-- Display post details -->
+    <p>{{post.contents}}</p>
+  </div>
+</section>
+
+{{#if loggedIn}}
+<!-- Comment Form -->
+<section class="card">
+  <header>Post a Comment</header>
+  <div class="card-body">
+    <form id="newComment">
+      <input type="hidden" value="{{post.id}}" id="postId">
+     <div class="card-body"> <textarea id="commentContent" placeholder="Write your comment here"></textarea>
+     </div>
+      <button type="submit">Submit Comment</button>
+    </form>
+  </div>
+</section>
+{{/if}}
+
+<!-- Display Comment -->
+
+{{#if post.comments.length}}
+<section class="card" id="commentsSection">
+  <header>Comments:</header>
+  <div class="card-body" id="commentsBody">
+    <h4>Comments:</h4>
+    {{#each post.comments as |comment|}}
+    <section class="card-section">
+      <div class="card-body">
+        <p>{{comment.content}} - by {{comment.user.username}} on {{format_date comment.createdAt}} </p>
+      </div>
+    </section>
+    {{/each}}
+  </div>
+</section>
+{{else}}
+<section class="card">
+  <header>Comments:</header>
+  <div class="card-body">
+    <p>No comments yet.</p>
+  </div>
+</section>
+{{/if}}
+
+{{#if loggedIn}}
+<script src="/js/comment.js"></script>
+{{/if}}
