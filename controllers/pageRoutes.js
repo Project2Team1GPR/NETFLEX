@@ -64,10 +64,19 @@ router.get("/dashboard", withAuth, async (req, res) => {
       order: [["createdAt", "DESC"]],
     });
 
+    const userData = await User.findOne({
+      where: {
+        id: req.session.user_id,
+      },
+    })
+
     const posts = postData.map((dashboard) => dashboard.get({ plain: true }));
+    const user = userData.get({ plain: true });
 
     console.log(posts);
-    res.render("dashboard", { posts, loggedIn: req.session.loggedIn });
+    console.log(user);
+    res.render("dashboard", { posts, loggedIn: req.session.loggedIn, user});
+
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
