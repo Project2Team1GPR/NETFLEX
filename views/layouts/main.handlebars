@@ -4,31 +4,63 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <title>Net.FLEX</title>
- 
 </head>
 
-<body>
-  <header>
-    <h1>Net.FLEX</h1>
-  </header>
-  <nav>
-    <a href="/">Flex</a>
-    <a href="/dashboard">Dashboard</a>
-    {{#if loggedIn}}
-    <button id="logout" class="btn-no-style">Logout</button>
-    {{else}}
-    <a href="/login">Login</a>
-    {{/if}}
-  </nav>
+<body class="container">
   <main>
-    <div class="blog">
+    {{#if loggedIn}}
+    {{> main-navbar}}
+    {{/if}}
+    <div>
       {{{body}}}
     </div>
   </main>
+  <footer>
+  </footer>
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- <header>
+  <h1>Net.FLEX</h1>
+</header>
+<nav>
+  <a href="/">Flex</a>
+  <a href="/dashboard">Dashboard</a>
+  {{#if loggedIn}}
+  <button id="logout" class="btn-no-style">Logout</button>
+  {{else}}
+  <a href="/login">Login</a>
+  {{/if}}
+</nav>
+<main>
+  <div>
+    {{{body}}}
+  </div>
+</main>
+{{#if loggedIn}}
+<script src="/js/logout.js"></script>
+{{/if}} --}}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
