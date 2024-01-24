@@ -1,4 +1,21 @@
 <section class="card">
+     <div class="card-body">
+    <form id="new-post">
+      <div class="mb-3">
+        <label for="postTitle" class="form-label">Title</label>
+        <input type="text" class="form-control" id="postTitle" placeholder="Enter post title">
+      </div>
+      <div class="mb-3">
+        <textarea class="form-control" id="postContent" placeholder="Write your post here"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Post</button>
+    </form>
+    </div>
+</section>
+
+<script src="/js/newPost.js"></script>
+
+{{!-- <section class="card">
     <header>Create a Post</header>
     <div class="card-body">
         <form id="new-post">
@@ -11,6 +28,4 @@
             </div>
             <button type="submit">Create Post</button>
         </form>
-</section>
-
-<script src="/js/newPost.js"></script>
+</section> --}}

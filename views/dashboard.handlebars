@@ -1,22 +1,30 @@
-<section>
+<section class="container text-center">
   <h1>Welcome, {{user.username}}</h1>
   <h2>Today's Date: {{currentDate}}</h2>
 </section>
 
 
-<section class="card-body">
-  <button class="card-body"><a href="/dashboard/create">Create Post</a></button>
+<section class="card-body text-center">
+  <button class="card-body btn btn-primary"><a href="/dashboard/create" class="text-white text-decoration-none">Create Post</a></button>
 </section>
 
 <!-- Display Posts -->
 {{#if posts.length}}
 
   {{#each posts as |post|}}
-<section class="card">
-  <a href="/dashboard/edit/{{post.id}}">
-    <header>{{post.title}}</header>
-    <p>Posted on: {{format_date post.createdAt}}</p>
-  </a>
+<section class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-sm-6 mb-4">
+      <div class="card text-center border-dark mb-4">
+        <div class="card-body">
+          <a href="/dashboard/edit/{{post.id}}" style="text-decoration: none; color: black;">
+            <header class="card-header h4">{{post.title}}</header>
+            <p class="lead">Posted on: {{format_date post.createdAt}}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 {{/each}}
 

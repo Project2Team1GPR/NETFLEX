@@ -41,6 +41,15 @@ const signupFormHandler = async (event) => {
   }
 };
 
+function toggleForm(showId, hideId) {
+  document.getElementById(showId).style.display = 'block';
+  document.getElementById(hideId).style.display = 'none';
+};
+
+function closeForm(formId) {
+  document.getElementById(formId).style.display = 'none';
+};
+
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);
