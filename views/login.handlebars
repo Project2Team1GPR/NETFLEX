@@ -5,54 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Net.FLEX</title>
 </head>
-<body style="background-image: url('./assets/images/projectimage.png'); background-repeat: no-repeat; background-size: cover;  min-height: 100vh; margin: 0; background-position: center;">
+<body style="background-image: url('./assets/images/image.png'); background-repeat: no-repeat; background-size: cover;  min-height: 100vh; margin: 0; background-position: center;">
 
-<!-- Login Form -->
-<section class="card login-card" id="loginCard" style="display: none;">
-  <h2 class="page-title">Login</h2>
-  <form class="form login-form">
-    <!-- ... Your login form content ... -->
-    <div class="mb-3">
-      <label for="email-login" class="form-label">Email:</label>
-      <input type="email" class="form-control" id="email-login" aria-describedby="emailHelp">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-    </div>
-    <div class="mb-3">
-      <label for="password-login" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password-login">
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-    <button type="button" class="btn btn-secondary" onclick="closeForm('loginCard')">Close</button>
-  </form>
-</section>
+<div class="d-flex align-items-center justify-content-center" style="min-height: 80vh; flex-direction: column;">
+  <div class="text-center">
+    <h1 class="display-3 text-black fw-bold" style="font-size: 10em; text-shadow: 4px 4px 0 white;">Net.FLEX</h1>
+  </div>
 
-<!-- Signup Form -->
-<section class="card signup-card" id="signupCard" style="display: none;">
-  <h2 class="page-title">Sign Up!</h2>
-  <form class="form signup-form">
-    <!-- ... Your signup form content ... -->
-    <div class="mb-3">
-      <label for="username-signup" class="form-label">Username:</label>
-      <input type="text" class="form-control" id="username-signup" aria-describedby="usernameHelp">
+  <div class="row mt-4">
+
+    <!-- Login Form -->
+    <div class="col-md-12 mt-4">
+      <section class="card login-card border rounded p-3" id="loginCard" style="display: none;">
+        <h2 class="page-title">Login</h2>
+        <form class="form login-form">
+          <!-- ... Your login form content ... -->
+          <div class="mb-3">
+            <label for="email-login" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email-login" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="password-login" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password-login">
+          </div>
+          <button type="submit" class="btn btn-primary" style="background-color: black; color: #ffffff;">Login</button>
+          <button type="button" class="btn btn-secondary" onclick="closeForm('loginCard')">Close</button>
+        </form>
+      </section>
     </div>
-    <div class="mb-3">
-      <label for="email-signup" class="form-label">Email:</label>
-      <input type="email" class="form-control" id="email-signup" aria-describedby="emailHelp">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    
+    <!-- Signup Form -->
+    <div class="col-md-12 mt-4">
+      <section class="card signup-card border rounded p-3" id="signupCard" style="display: none;">
+        <h2 class="page-title">Sign Up!</h2>
+        <form class="form signup-form">
+          <!-- ... Your signup form content ... -->
+          <div class="mb-3">
+            <label for="username-signup" class="form-label">Username:</label>
+            <input type="text" class="form-control" id="username-signup" aria-describedby="usernameHelp">
+          </div>
+          <div class="mb-3">
+            <label for="email-signup" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email-signup" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3">
+            <label for="password-signup" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password-signup">
+          </div>
+          <button type="submit" class="btn btn-primary" style="background-color: black; color: #ffffff;">Sign Up</button>
+          <button type="button" class="btn btn-secondary" onclick="closeForm('signupCard')">Close</button>
+        </form>
+      </section>
     </div>
-    <div class="mb-3">
-      <label for="password-signup" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password-signup">
-    </div>
-    <button type="submit" class="btn btn-primary">Sign Up</button>
-    <button type="button" class="btn btn-secondary" onclick="closeForm('signupCard')">Close</button>
-  </form>
-</section>
+  </div>
+</div>
 
 <!-- Toggle Buttons -->
 <div class="text-center mt-3">
-  <button class="btn btn-primary" onclick="toggleForm('loginCard', 'signupCard')">Login</button>
-  <button class="btn btn-primary" onclick="toggleForm('signupCard', 'loginCard')">Sign Up</button>
+  <button class="btn btn-primary" style="background-color: black; color: #ffffff;" onclick="toggleForm('loginCard', 'signupCard')">Login</button>
+  <button class="btn btn-primary" style="background-color: black; color: #ffffff;" onclick="toggleForm('signupCard', 'loginCard')">Sign Up</button>
 </div>
 
 </body>

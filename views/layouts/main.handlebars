@@ -9,7 +9,9 @@
   <title>Net.FLEX</title>
 </head>
 
-<body>
+<body 
+style="background-image: url('./assets/images/image.png'); background-repeat: no-repeat; background-size: cover;  min-height: 100vh; margin: 0; background-position: center;"
+>
   <main class="container">
     {{#if loggedIn}}
     {{> main-navbar}}
@@ -18,12 +20,13 @@
       {{{body}}}
     </div>
   </main>
-  <footer>
-  </footer>
+  {{!-- <footer  class="text-center mt-4" style="background-color: rgba(39, 93, 39, 0.556); color:black; padding: 10px;">
+    <div class="container-fluidr"><h2>Team Name</h2></div>
+  </footer> --}}
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
-</body>
+
 
 
 

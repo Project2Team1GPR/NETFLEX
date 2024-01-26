@@ -1,11 +1,19 @@
-<section class="container text-center">
-  <h1>Welcome, {{user.username}}</h1>
-  <h2>Today's Date: {{currentDate}}</h2>
+<section class="container mt-4 text-center">
+  <div class="row justify-content-center">
+    <div class="col-sm-6 mb-4">
+      <div class="card text-center border-dark">
+        <div class="card-body">
+          <h1 class="card-header" style="background-color: rgba(39, 93, 39, 0.556);">Welcome, {{user.username}}</h1>
+          <h2>Today's Date: {{currentDate}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 
 <section class="card-body text-center">
-  <button class="card-body btn btn-primary"><a href="/dashboard/create" class="text-white text-decoration-none">Create Post</a></button>
+  <button class="btn btn-primary mt-4" style="background-color: black; color: #ffffff;"><a href="/dashboard/create" class="text-white text-decoration-none" >Create Post</a></button>
 </section>
 
 <!-- Display Posts -->
@@ -15,13 +23,14 @@
 <section class="container mt-4">
   <div class="row justify-content-center">
     <div class="col-sm-6 mb-4">
-      <div class="card text-center border-dark mb-4">
+      <div class="card text-center border-dark">
         <div class="card-body">
           <a href="/dashboard/edit/{{post.id}}" style="text-decoration: none; color: black;">
-            <header class="card-header h4">{{post.title}}</header>
+            <header class="card-header h4" style="background-color: rgba(39, 93, 39, 0.556);">{{post.title}}</header>
             <p class="lead">Posted on: {{format_date post.createdAt}}</p>
           </a>
         </div>
+        <div class="card-footer"></div>
       </div>
     </div>
   </div>
@@ -29,10 +38,17 @@
 {{/each}}
 
 {{else}}
-<section class="card">
-  <div class="card-body">
-    <p>No posts yet.</p>
+  <div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-sm-6 mb-4">
+      <section class="card text-center border-dark">
+        <header class="card-header h4" style="background-color: rgba(39, 93, 39, 0.556);">Posts</header>
+        <div class="card-body">
+          <p>No posts yet.</p>
+        </div>
+        <div class="card-footer"></div>
+      </section>
     </div>
-  </section>
-{{/if}}
+  </div>
 </div>
+{{/if}}
