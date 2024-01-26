@@ -20,6 +20,9 @@ style="background-image: url('./assets/images/image.png'); background-repeat: no
       {{{body}}}
     </div>
   </main>
+   {{#if loggedIn}}
+    {{> footer}}
+    {{/if}}
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
