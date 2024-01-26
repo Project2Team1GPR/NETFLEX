@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -78,5 +78,72 @@
   <footer>
     &copy; 2024 Net.FLEX
   </footer>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Activity Log</title>
+</head>
+<style>
+    .calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.month {
+  grid-column: span 7;
+  text-align: center;
+}
+
+.day, .date {
+  padding: 1em;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .day, .date {
+    padding: 0.5em;
+  }
+  .date.today {
+  background-color: #f00;
+  color: #fff;
+}
+}
+
+</style>
+<body>
+    <h1>Activity Log</h1>
+
+    <!-- Display the current date -->
+    <h2>{{currentDate}}</h2>
+
+    <!-- Display a calendar (this would require additional JavaScript and CSS) -->
+    <div class="calendar">
+  <div class="month">January</div>
+  <div class="week">
+    <div class="day">Sun</div>
+    <div class="day">Mon</div>
+    ...
+  </div>
+  <div class="dates">
+    <div class="date">1</div>
+    <div class="date">2</div>
+    ...
+  </div>
+</div>
+
+    <!-- List of exercises -->
+    <h2>Exercises</h2>
+    <ul>
+        {{#each exercises}}
+            <li>
+                <h3>{{this.name}}</h3>
+                <p>{{this.description}}</p>
+            </li>
+        {{/each}}
+    </ul>
+
 </body>
 </html>
