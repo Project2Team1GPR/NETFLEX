@@ -21,7 +21,7 @@
             <div class="form-group">
               <input type="text" id="activity-description" placeholder="Activity description" class="form-control"
                 required>
-              <input type="text" id="length" placeholder="length of exercise" class="form-control" required>
+              <input type="text" id="length" placeholder="length of exercise" class="form-control mt-4" required>
             </div>
             <!-- Add more inputs as needed -->
             <button type="submit" class="btn btn-primary mt-4"
@@ -43,9 +43,8 @@
           <div class="card-body">
             <li class="list-group-item mt-4">
               <h3>{{this.exercises}}</h3>
-              <p>{{this.currentDate}}</p>
-              <p>{{this.length}}</p>
               <p>{{format_date this.currentDate}}</p>
+              <p>{{this.length}}</p>
             </li>
           </div>
         </div>

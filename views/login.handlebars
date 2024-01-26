@@ -5,28 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>NETFLEX</title>
 </head>
-<body style="background-image: url('./assets/images/image.png'); background-repeat: no-repeat; background-size: cover;  min-height: 100vh; margin: 0; background-position: center;">
+<body style="background-image: url('./assets/images/image.png'); background-repeat: no-repeat; background-size: cover;  min-height: 80vh; margin: 0; background-position: center;">
 
 <div class="d-flex align-items-center justify-content-center" style="min-height: 80vh; flex-direction: column;">
   <div class="text-center">
-    <h1 class="display-3 text-black fw-bold" style="font-size: 10em; text-shadow: 4px 4px 0 white;">NETFLEX</h1>
+    <h1 class="display-3 text-black fw-bold text-md-lg text-lg-xl" style="font-size: 10vw; text-shadow: 4px 4px 0 white;">NETFLEX</h1>
   </div>
 
  <!-- About Section -->
     <section class="card about-card border rounded p-3 mt-4">
-      <h2 class="page-title text-center">What is NetFLEX</h2>
-      <p class="text-center">Welcome to Net.FLEX, your ultimate workout companion! Net.FLEX is a dedicated workout tracker app designed to support and enhance your fitness journey. Whether you're a seasoned athlete or just starting your fitness adventure, our app empowers you to set, track, and achieve your workout goals with ease. With intuitive features and a user-friendly interface, Net.FLEX simplifies the process of logging and monitoring your exercises, helping you stay motivated and focused on your fitness objectives. Join us on this fitness expedition, where every rep and every step brings you closer to your best self. Let Net.FLEX be your partner in achieving a healthier, stronger, and more active lifestyle.</p>
+      <h2 class="page-title text-center">About NETFLEX</h2>
+      <p class="text-center">Welcome to NETFLEX, your ultimate workout companion! NETFLEX is a dedicated workout tracker app designed to support and enhance your fitness journey. Whether you're a seasoned athlete or just starting your fitness adventure, our app empowers you to set, track, and achieve your workout goals with ease. With intuitive features and a user-friendly interface, NETFLEX simplifies the process of logging and monitoring your exercises, helping you stay motivated and focused on your fitness objectives. Join us on this fitness expedition, where every rep and every step brings you closer to your best self. Let NETFLEX be your partner in achieving a healthier, stronger, and more active lifestyle.</p>
     </section>
 
   <div class="row mt-4">
-
     <!-- Login Form -->
     <div class="col-md-12 mt-4">
       <section class="card login-card border rounded p-3" id="loginCard" style="display: none;">
         <h2 class="page-title">Login</h2>
         <form class="form login-form">
           <!-- ... Your login form content ... -->
-          <div class="mb-3">
+          <div class=" form-group mb-3">
             <label for="email-login" class="form-label">Email:</label>
             <input type="email" class="form-control" id="email-login" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
@@ -47,7 +46,7 @@
         <h2 class="page-title">Sign Up!</h2>
         <form class="form signup-form">
           <!-- ... Your signup form content ... -->
-          <div class="mb-3">
+          <div class=" form-group mb-3">
             <label for="username-signup" class="form-label">Username:</label>
             <input type="text" class="form-control" id="username-signup" aria-describedby="usernameHelp">
           </div>
@@ -70,8 +69,8 @@
 
 <!-- Toggle Buttons -->
 <div class="text-center mt-3">
-  <button class="btn btn-primary" style="background-color: black; color: #ffffff;" onclick="toggleForm('loginCard', 'signupCard')">Login</button>
-  <button class="btn btn-primary" style="background-color: black; color: #ffffff;" onclick="toggleForm('signupCard', 'loginCard')">Sign Up</button>
+  <button class="btn btn-primary mb-4" style="background-color: black; color: #ffffff;" onclick="toggleForm('loginCard', 'signupCard')">Login</button>
+  <button class="btn btn-primary mb-4" style="background-color: black; color: #ffffff;" onclick="toggleForm('signupCard', 'loginCard')">Sign Up</button>
 </div>
 
 </body>
