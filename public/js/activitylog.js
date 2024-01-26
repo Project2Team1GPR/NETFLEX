@@ -40,7 +40,6 @@ document.getElementById('activity-log-form').addEventListener('submit', function
     console.log(data)
     
     // updateCalendar([data]);
-
   } else {
     console.error('Error: no array');
   }  

@@ -4,12 +4,10 @@ const withAuth = require("../utils/auth");
 // get all blog posts for homepage
 router.get("/", withAuth, async (req, res) => {
   try {
-    const dbPostData = await Post.findAll(
-      {
+    const dbPostData = await Post.findAll({
       include: [{ model: User, attributes: ["username"] }],
       order: [["createdAt", "DESC"]],
-    }
-    );
+    });
 
     const posts = dbPostData.map((post) => post.get({ plain: true }));
     console.log("BLOGS", posts);
@@ -67,21 +65,19 @@ router.get("/dashboard", withAuth, async (req, res) => {
       where: {
         id: req.session.user_id,
       },
-    })
+    });
 
     const posts = postData.map((dashboard) => dashboard.get({ plain: true }));
     const user = userData.get({ plain: true });
 
     console.log(posts);
     console.log(user);
-    res.render("dashboard", { posts, loggedIn: req.session.loggedIn, user});
-
+    res.render("dashboard", { posts, loggedIn: req.session.loggedIn, user });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
 
 // Get form for user to create a post
 router.get("/dashboard/create", async (req, res) => {
@@ -122,23 +118,23 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-
-//activity log 
-router.get('/activitylog', async (req, res) => {
+//activity log
+router.get("/activitylog", async (req, res) => {
   try {
-      const logs = await ActivityLog.findAll(); // fetch all logs from the database
-      const logsData = logs.map(log => log.get({ plain: true })); // convert logs to plain JavaScript objects
-console.log("made it to activity log");
-console.log(logs);
-      res.render('activity-log', { 
-          logs: logsData, // pass the logs to the view
-          layout: 'main' // specify the layout if you're using one
-      });
+    const logs = await ActivityLog.findAll({
+      order: [["createdAt", "DESC"]],
+    }); // fetch all logs from the database
+    const logsData = logs.map((log) => log.get({ plain: true })); // convert logs to plain JavaScript objects
+    console.log("made it to activity log");
+    console.log(logs);
+    res.render("activity-log", { loggedIn: req.session.loggedIn, 
+      logs: logsData, // pass the logs to the view
+      layout: "main", // specify the layout if you're using one
+    });
   } catch (err) {
-      console.error(err);
-      res.status(500).json(err);
+    console.error(err);
+    res.status(500).json(err);
   }
 });
-
 
 module.exports = router;
