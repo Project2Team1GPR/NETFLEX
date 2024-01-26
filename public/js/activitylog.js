@@ -8,8 +8,12 @@ function updateCalendar(data) {
     const activityElement = document.createElement('div');
     activityElement.textContent = activity.description;
 
-    // Add the activity element to the calendar
-    calendar.appendChild(activityElement);
+    const lengthElement = document.createElement('div');  
+    lengthElement.textContent = activity.length;
+
+    // // Add the activity element to the calendar
+    // calendar.appendChild(activityElement);
+    // calendar.appendChild(lengthElement);
   });
 }
 
@@ -17,6 +21,7 @@ document.getElementById('activity-log-form').addEventListener('submit', function
   event.preventDefault(); 
 
   const description = document.getElementById('activity-description').value;
+  const length = document.getElementById('length').value;  
   
   fetch('/api/activitylog', {
     method: 'POST',
@@ -25,11 +30,11 @@ document.getElementById('activity-log-form').addEventListener('submit', function
     },
     body: JSON.stringify({
       exercises: description,
+      length: length,
       // Other data
     }),
   })
   
-
   .then(response => { 
     console.log('Response', response); 
     return response.json(); }
@@ -38,20 +43,18 @@ document.getElementById('activity-log-form').addEventListener('submit', function
     console.log('Data:', data);
         if (Array.isArray(data.exercises)) {
     console.log(data)
-    
-    // updateCalendar([data]);
-  } else {
-    console.error('Error: no array');
-  }  
+    updateCalendar(data.exercises);
+        }
+        else {
+          console.error('Error: no array');
+        }
   })
   .catch((error) => {
     console.error('Error:', error);
-  });
-}
-);
-
-//
-
+  }
+  );
+    
+});
 // Get the current date
 // const currentDate = new Date();
 

@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Post, Comment, User, ActivityLog } = require("../models");
 const withAuth = require("../utils/auth");
+
 // get all blog posts for homepage
 router.get("/", withAuth, async (req, res) => {
   try {
@@ -27,7 +28,7 @@ router.get("/post/:id", async (req, res) => {
     const dbPostData = await Post.findByPk(req.params.id, {
       include: [
         {
-          model: User,
+          model: User,  
           attributes: ["username"],
         },
         {
@@ -119,20 +120,26 @@ router.get("/login", (req, res) => {
 });
 
 //activity log
+//the activity that is posted should only be that user id's activity and not ALL activity
+//It should not be able to be seen by other users. this is that user id's activity only.
+// then console log and render under the exercises Headers//
+
 router.get("/activitylog", async (req, res) => {
   try {
-    const logs = await ActivityLog.findAll({
+    const dbActivityData = await ActivityLog.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
       order: [["createdAt", "DESC"]],
-    }); // fetch all logs from the database
-    const logsData = logs.map((log) => log.get({ plain: true })); // convert logs to plain JavaScript objects
-    console.log("made it to activity log");
-    console.log(logs);
-    res.render("activity-log", { loggedIn: req.session.loggedIn, 
-      logs: logsData, // pass the logs to the view
-      layout: "main", // specify the layout if you're using one
     });
+
+    const activity = dbActivityData.map((activitylog) =>
+      activitylog.get({ plain: true })
+    );
+    console.log(activity);
+    res.render("activity-log", { logs: activity, loggedIn: req.session.loggedIn });
   } catch (err) {
-    console.error(err);
+    console.log(err);
     res.status(500).json(err);
   }
 });
