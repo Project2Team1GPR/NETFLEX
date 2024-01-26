@@ -1,15 +1,14 @@
 const router = require("express").Router();
 const { Post, Comment, User, ActivityLog } = require("../models");
 const withAuth = require("../utils/auth");
+
 // get all blog posts for homepage
 router.get("/", withAuth, async (req, res) => {
   try {
-    const dbPostData = await Post.findAll(
-      {
+    const dbPostData = await Post.findAll({
       include: [{ model: User, attributes: ["username"] }],
       order: [["createdAt", "DESC"]],
-    }
-    );
+    });
 
     const posts = dbPostData.map((post) => post.get({ plain: true }));
     console.log("BLOGS", posts);
@@ -29,7 +28,7 @@ router.get("/post/:id", async (req, res) => {
     const dbPostData = await Post.findByPk(req.params.id, {
       include: [
         {
-          model: User,
+          model: User,  
           attributes: ["username"],
         },
         {
@@ -67,21 +66,19 @@ router.get("/dashboard", withAuth, async (req, res) => {
       where: {
         id: req.session.user_id,
       },
-    })
+    });
 
     const posts = postData.map((dashboard) => dashboard.get({ plain: true }));
     const user = userData.get({ plain: true });
 
     console.log(posts);
     console.log(user);
-    res.render("dashboard", { posts, loggedIn: req.session.loggedIn, user});
-
+    res.render("dashboard", { posts, loggedIn: req.session.loggedIn, user });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
 
 // Get form for user to create a post
 router.get("/dashboard/create", async (req, res) => {
@@ -122,23 +119,29 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+//activity log
+//the activity that is posted should only be that user id's activity and not ALL activity
+//It should not be able to be seen by other users. this is that user id's activity only.
+// then console log and render under the exercises Headers//
 
-//activity log 
-router.get('/activitylog', async (req, res) => {
+router.get("/activitylog", async (req, res) => {
   try {
-      const logs = await ActivityLog.findAll(); // fetch all logs from the database
-      const logsData = logs.map(log => log.get({ plain: true })); // convert logs to plain JavaScript objects
-console.log("made it to activity log");
-console.log(logs);
-      res.render('activity-log', { 
-          logs: logsData, // pass the logs to the view
-          layout: 'main' // specify the layout if you're using one
-      });
+    const dbActivityData = await ActivityLog.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+      order: [["createdAt", "DESC"]],
+    });
+
+    const activity = dbActivityData.map((activitylog) =>
+      activitylog.get({ plain: true })
+    );
+    console.log(activity);
+    res.render("activity-log", { logs: activity, loggedIn: req.session.loggedIn });
   } catch (err) {
-      console.error(err);
-      res.status(500).json(err);
+    console.log(err);
+    res.status(500).json(err);
   }
 });
-
 
 module.exports = router;

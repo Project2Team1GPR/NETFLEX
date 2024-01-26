@@ -22,7 +22,8 @@ ActivityLog.init(
     },
     length: {
       type: DataTypes.INTEGER,
-      defaultValue: 30,      allowNull: false,
+      defaultValue: 30,    
+        allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
