@@ -3,7 +3,7 @@
     <div class="col-sm-6 mb-4">
       <div class="card text-center border-dark">
         <div class="card-body">
-          <h1 class="card-header" style="background-color: rgba(39, 93, 39, 0.556);">Welcome, {{user.username}}</h1>
+          <h1 class="card-header" style="background-color: black; color: white">Welcome, {{user.username}}</h1>
           <h2>Today's Date: {{currentDate}}</h2>
         </div>
       </div>
@@ -26,7 +26,7 @@
       <div class="card text-center border-dark">
         <div class="card-body">
           <a href="/dashboard/edit/{{post.id}}" style="text-decoration: none; color: black;">
-            <header class="card-header h4" style="background-color: rgba(39, 93, 39, 0.556);">{{post.title}}</header>
+            <header class="card-header h4" style="background-color: black; color: white">{{post.title}}</header>
             <p class="lead">Posted on: {{format_date post.createdAt}}</p>
           </a>
         </div>

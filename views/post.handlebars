@@ -3,7 +3,7 @@
     <div class="col-sm-6 mb-4">
       <section class="card text-center border-dark">
         <header>
-          <h2 class="card-header h4" style="background-color: rgba(39, 93, 39, 0.556);">{{post.title}}</h2>
+          <h2 class="card-header h4" style="background-color: black; color: white">{{post.title}}</h2>
           <p class="lead">Date Posted: {{format_date post.createdAt}}</p>
           <p>By: {{post.user.username}}</p>
         </header>
@@ -24,7 +24,7 @@
   <div class="row justify-content-center">
     <div class="col-sm-6 mb-4">
       <section class="card text-center border-dark">
-        <header class="card-header h4" style="background-color: rgba(39, 93, 39, 0.556);">Post a Comment</header>
+        <header class="card-header h4" style="background-color: black; color: white"">Post a Comment</header>
         <div class="card-body">
           <form id="newComment">
             <input type="hidden" value="{{post.id}}" id="postId">
@@ -48,7 +48,7 @@
   <div class="row justify-content-center">
     <div class="col-sm-6 mb-4">
       <section class="card text-center border-dark" id="commentsSection">
-        <header class="card-header h4" style="background-color: rgba(39, 93, 39, 0.556);">Comments</header>
+        <header class="card-header h4" style="background-color: black; color: white">Comments</header>
         <div class="card-body" id="commentsBody">
           {{#each post.comments as |comment|}}
           {{!-- <section class="card-section"> --}}
@@ -70,7 +70,7 @@
   <div class="row justify-content-center">
     <div class="col-sm-6 mb-4">
       <section class="card text-center border-dark">
-        <header class="card-header h4" style="background-color: rgba(39, 93, 39, 0.556);">Comments</header>
+        <header class="card-header h4" style="background-color: black; color: white">Comments</header>
         <div class="card-body">
           <p>No comments yet.</p>
         </div>
