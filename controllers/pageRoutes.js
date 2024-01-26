@@ -1,7 +1,6 @@
 const router = require("express").Router();
-const { Post, Comment, User } = require("../models");
+const { Post, Comment, User, ActivityLog } = require("../models");
 const withAuth = require("../utils/auth");
-
 // get all blog posts for homepage
 router.get("/", withAuth, async (req, res) => {
   try {
@@ -83,6 +82,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
   }
 });
 
+
 // Get form for user to create a post
 router.get("/dashboard/create", async (req, res) => {
   res.render("create-post", { loggedIn: req.session.loggedIn });
@@ -121,5 +121,24 @@ router.get("/login", (req, res) => {
   }
   res.render("login");
 });
+
+
+//activity log 
+router.get('/activitylog', async (req, res) => {
+  try {
+      const logs = await ActivityLog.findAll(); // fetch all logs from the database
+      const logsData = logs.map(log => log.get({ plain: true })); // convert logs to plain JavaScript objects
+console.log("made it to activity log");
+console.log(logs);
+      res.render('activity-log', { 
+          logs: logsData, // pass the logs to the view
+          layout: 'main' // specify the layout if you're using one
+      });
+  } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;
