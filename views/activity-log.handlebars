@@ -1,0 +1,72 @@
+
+
+   <h1>ACTIVITY LOG</h1>
+<style>
+    .calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.month {
+  grid-column: span 7;
+  text-align: center;
+}
+
+.day, .date {
+  padding: 1em;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .day, .date {
+    padding: 0.5em;
+  }
+  .date.today {
+  background-color: #f00;
+  color: #fff;
+}
+}
+</style>
+
+
+
+    <h1>Activity Log</h1>
+
+    <!-- Display the current date -->
+    <h2>{{currentDate}}</h2>
+
+<form id="activity-log-form">
+  <input type="text" id="activity-description" placeholder="Activity description" required>
+  <!-- Add more inputs as needed -->
+  <button type="submit">Submit</button>
+</form>
+    <!-- Display a calendar (this would require additional JavaScript and CSS) -->
+    {{!-- <div class="calendar" id="calendar">
+  <div class="month">January</div>
+  <div class="week">
+    <div class="day">Sun</div>
+    <div class="day">Mon</div>
+    ...
+  </div>
+  <div class="dates">
+    <div class="date">1</div>
+    <div class="date">2</div>
+    ...
+  </div> --}}
+{{!-- </div> --}}
+
+    <!-- List of exercises -->
+  
+    <h2>Exercises</h2>
+    <ul>
+        {{#each logs }}
+            <li>
+                <h3>{{this.exercises}}</h3>
+                <p>{{this.currentDate}}</p>
+            </li>
+        {{/each}}
+    </ul>
+    <script src="/js/activityLog.js"></script>
+<script src="/js/calendar.js"></script>
+
+ 
