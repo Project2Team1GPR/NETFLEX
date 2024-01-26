@@ -1,0 +1,59 @@
+<section class="container mt-4 text-center">
+  <div class="row justify-content-center">
+    <div class="col-sm-6 mb-4">
+      <div class="card text-center border-dark">
+        <div class="card-body">
+          <h1 class="card-header" style="background-color: black; color: white">Activity Log</h1>
+          <!-- Display the current date -->
+          <h2>{{currentDate}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container mt-4 text-center">
+  <div class="row justify-content-center">
+    <div class="col-sm-6 mb-4">
+      <div class="card text-center border-dark">
+        <div class="card-body">
+          <form id="activity-log-form" class="mt-4">
+            <div class="form-group">
+              <input type="text" id="activity-description" placeholder="Activity description" class="form-control"
+                required>
+              <input type="text" id="length" placeholder="length of exercise" class="form-control" required>
+            </div>
+            <!-- Add more inputs as needed -->
+            <button type="submit" class="btn btn-primary mt-4"
+              style="background-color: black; color: #ffffff;">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- List of exercises -->
+<ul class="list-group">
+  {{#each logs }}
+  <section class="container mt-4 text-center">
+    <div class="row justify-content-center">
+      <div class="col-sm-6 mb-4">
+        <div class="card text-center border-dark">
+          <div class="card-body">
+            <li class="list-group-item mt-4">
+              <h3>{{this.exercises}}</h3>
+              <p>{{this.currentDate}}</p>
+              <p>{{this.length}}</p>
+              <p>{{format_date this.currentDate}}</p>
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{/each}}
+</ul>
+
+<script src="/js/activityLog.js"></script>
+<script src="/js/calendar.js"></script>
