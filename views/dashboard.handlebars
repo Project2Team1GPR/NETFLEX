@@ -3,23 +3,23 @@
     <div class="col-sm-6 mb-4">
       <div class="card text-center border-dark">
         <div class="card-body">
-          <h1 class="card-header" style="background-color: black; color: white">Welcome, {{user.username}}</h1>
+          
+          <h1 class="card-header" style="background-color: black; color: white"><i class="fa-solid fa-person-running"></i> Welcome, {{user.username}} <i class="fa-solid fa-person-running"></i></h1>
           <h2>Today's Date: {{currentDate}}</h2>
         </div>
+        <section class="card-body text-center">
+          <button class="btn btn-primary mt-4" style="background-color: black; color: #ffffff;"><a
+              href="/dashboard/create" class="text-white text-decoration-none">Create Post</a></button>
+        </section>
       </div>
     </div>
   </div>
 </section>
 
-
-<section class="card-body text-center">
-  <button class="btn btn-primary mt-4" style="background-color: black; color: #ffffff;"><a href="/dashboard/create" class="text-white text-decoration-none" >Create Post</a></button>
-</section>
-
 <!-- Display Posts -->
 {{#if posts.length}}
 
-  {{#each posts as |post|}}
+{{#each posts as |post|}}
 <section class="container mt-4">
   <div class="row justify-content-center">
     <div class="col-sm-6 mb-4">
@@ -38,7 +38,7 @@
 {{/each}}
 
 {{else}}
-  <div class="container mt-4">
+<div class="container mt-4">
   <div class="row justify-content-center">
     <div class="col-sm-6 mb-4">
       <section class="card text-center border-dark">

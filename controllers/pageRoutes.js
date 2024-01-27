@@ -28,7 +28,7 @@ router.get("/post/:id", async (req, res) => {
     const dbPostData = await Post.findByPk(req.params.id, {
       include: [
         {
-          model: User,  
+          model: User,
           attributes: ["username"],
         },
         {
@@ -137,7 +137,10 @@ router.get("/activitylog", async (req, res) => {
       activitylog.get({ plain: true })
     );
     console.log(activity);
-    res.render("activity-log", { logs: activity, loggedIn: req.session.loggedIn });
+    res.render("activity-log", {
+      logs: activity,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
