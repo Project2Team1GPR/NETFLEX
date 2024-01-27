@@ -1,86 +1,90 @@
-<div class="container mt-4">
-  <div class="row justify-content-center">
-    <div class="col-sm-6 mb-4">
-      <section class="card text-center border-dark">
-        <header>
-          <h2 class="card-header h4" style="background-color: black; color: white">{{post.title}}</h2>
-          <p class="lead">Date Posted: {{format_date post.createdAt}}</p>
-          <p>By: {{post.user.username}}</p>
-        </header>
-        <div class="card-body" style="background-color: #dddfe0; border: 1px solid #000; margin: 10px; padding: 10px;">
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-sm-6 mb-4">
+        <section class="card text-center border-dark">
+          <header>
+            <h2 class="card-header h4" style="background-color: black; color: white">{{post.title}}</h2>
+            <p class="lead">Date Posted: {{format_date post.createdAt}}</p>
+            <p>By: {{post.user.username}}</p>
+          </header>
+          <div class="card-body"
+            style="background-color: #dddfe0; border: 1px solid #000; margin: 10px; padding: 10px;">
 
-          <!-- Display post details -->
-          <p>{{post.contents}}</p>
-        </div>
-        <div class="card-footer"></div>
-      </section>
+            <!-- Display post details -->
+            <p>{{post.contents}}</p>
+          </div>
+          <div class="card-footer"></div>
+        </section>
+      </div>
     </div>
   </div>
-</div>
 
-{{#if loggedIn}}
-<!-- Comment Form -->
-<div class="container mt-4">
-  <div class="row justify-content-center">
-    <div class="col-sm-6 mb-4">
-      <section class="card text-center border-dark">
-        <header class="card-header h4" style="background-color: black; color: white">Post a Comment</header>
-        <div class="card-body">
-          <form id="newComment">
-            <input type="hidden" value="{{post.id}}" id="postId">
-            <div class="form-group">
-              <textarea class="form-control" id="commentContent" placeholder="Write your comment here"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary mt-4" style="background-color: black; color: #ffffff;">Submit Comment</button>
-          </form>
-        </div>
-        <div class="card-footer"></div>
-      </section>
+  {{#if loggedIn}}
+  <!-- Comment Form -->
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-sm-6 mb-4">
+        <section class="card text-center border-dark">
+          <header class="card-header h4" style="background-color: black; color: white">Post a Comment</header>
+          <div class="card-body">
+            <form id="newComment">
+              <input type="hidden" value="{{post.id}}" id="postId">
+              <div class="form-group">
+                <textarea class="form-control" id="commentContent" placeholder="Write your comment here"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary mt-4" style="background-color: black; color: #ffffff;">Submit
+                Comment</button>
+            </form>
+          </div>
+          <div class="card-footer"></div>
+        </section>
+      </div>
     </div>
   </div>
-</div>
-{{/if}}
+  {{/if}}
 
-<!-- Display Comment -->
+  <!-- Display Comment -->
 
-{{#if post.comments.length}}
-<div class="container mt-4">
-  <div class="row justify-content-center">
-    <div class="col-sm-6 mb-4">
-      <section class="card text-center border-dark" id="commentsSection">
-        <header class="card-header h4" style="background-color: black; color: white">Comments</header>
-        <div class="card-body" id="commentsBody">
-          {{#each post.comments as |comment|}}
-          {{!-- <section class="card-section"> --}}
-            <div class="card mb-3">
-              <div class="card-body">
-                <p class="card-text">{{comment.content}} - by {{comment.user.username}} on {{format_date comment.createdAt}} </p>
+  {{#if post.comments.length}}
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-sm-6 mb-4">
+        <section class="card text-center border-dark" id="commentsSection">
+          <header class="card-header h4" style="background-color: black; color: white">Comments</header>
+          <div class="card-body" id="commentsBody">
+            {{#each post.comments as |comment|}}
+            {{!-- <section class="card-section"> --}}
+              <div class="card mb-3">
+                <div class="card-body">
+                  <p class="card-text">{{comment.content}} - by {{comment.user.username}} on {{format_date
+                    comment.createdAt}} </p>
                 </div>
-            </div>
-          {{!-- </section> --}}
-          {{/each}}
-        </div>
-        <div class="card-footer"></div>
-      </section>
+              </div>
+              {{!--
+            </section> --}}
+            {{/each}}
+          </div>
+          <div class="card-footer"></div>
+        </section>
+      </div>
     </div>
   </div>
-</div>
-{{else}}
-<div class="container mt-4">
-  <div class="row justify-content-center">
-    <div class="col-sm-6 mb-4">
-      <section class="card text-center border-dark">
-        <header class="card-header h4" style="background-color: black; color: white">Comments</header>
-        <div class="card-body">
-          <p>No comments yet.</p>
-        </div>
-        <div class="card-footer"></div>
-      </section>
+  {{else}}
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-sm-6 mb-4">
+        <section class="card text-center border-dark">
+          <header class="card-header h4" style="background-color: black; color: white">Comments</header>
+          <div class="card-body">
+            <p>No comments yet.</p>
+          </div>
+          <div class="card-footer"></div>
+        </section>
+      </div>
     </div>
   </div>
-</div>
-{{/if}}
+  {{/if}}
 
-{{#if loggedIn}}
-<script src="/js/comment.js"></script>
-{{/if}}
+  {{#if loggedIn}}
+  <script src="/js/comment.js"></script>
+  {{/if}}

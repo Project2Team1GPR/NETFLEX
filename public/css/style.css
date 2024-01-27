@@ -1,0 +1,19 @@
+body {
+    background-image: url('../assets/images/image.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar-logo {
+    width: 60px; /* Set the width as needed */
+    height: 45px; /* Set the height as needed */
+    background-image: url('../assets/images/logo4.png');
+    background-size: contain; /* Adjust as needed */
+    background-repeat: no-repeat;
+    display: inline-block;
+}

@@ -13,7 +13,7 @@ ActivityLog.init(
     },
     currentDate: {
       type: DataTypes.DATE,
-      defaultValue: Date.now, 
+      defaultValue: Date.now,
       allowNull: false,
     },
     exercises: {
@@ -22,8 +22,8 @@ ActivityLog.init(
     },
     length: {
       type: DataTypes.INTEGER,
-      defaultValue: 30,    
-        allowNull: false,
+      defaultValue: 30,
+      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -41,6 +41,5 @@ ActivityLog.init(
     modelName: "activitylog",
   }
 );
-
 
 module.exports = ActivityLog;
