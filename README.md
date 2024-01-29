@@ -190,11 +190,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Gavin Meyer | Email: gpmeyer24@gmail.com | GitHub: Project2Team1GPR
+Gavin Meyer | Email: gpmeyer24@gmail.com | GitHub: gmeyer24
 
 Jenni Park | Email: hjipark22@gmail.com | GitHub: hjenp22
 
-Sean Harrigan | Email:  | GitHub: seanharrigan8
+Sean Harrigan | Email: seanharrigan8@gmail.com  | GitHub: seanharrigan8
 
 Project Link: [GitHub Repo](https://github.com/Project2Team1GPR/NETFLEX)
 

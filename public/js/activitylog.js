@@ -31,7 +31,6 @@ document.getElementById('activity-log-form').addEventListener('submit', function
     body: JSON.stringify({
       exercises: description,
       length: length,
-      // Other data
     }),
   })
   
@@ -43,6 +42,7 @@ document.getElementById('activity-log-form').addEventListener('submit', function
     console.log('Data:', data);
         if (Array.isArray(data.exercises)) {
     console.log(data)
+    window.location.reload();
     updateCalendar(data.exercises);
         }
         else {
