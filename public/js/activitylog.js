@@ -42,8 +42,8 @@ document.getElementById('activity-log-form').addEventListener('submit', function
     console.log('Data:', data);
         if (Array.isArray(data.exercises)) {
     console.log(data)
-    window.location.reload();
     updateCalendar(data.exercises);
+    window.location.reload();
         }
         else {
           console.error('Error: no array');
