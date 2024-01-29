@@ -1,7 +1,93 @@
-<body class="not-found-page">
-     <h1 class="text-center">404 Page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404: Not A Gouda Guess</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightgoldenrodyellow;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Updated */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; 
+            text-align: center; /* Added */
+            position: relative; /* Added */
+        }
+        .not-found-page {
+            margin-bottom: auto; /* Added */
+        }
+        .not-found-page h1 {
+            font-size: 3em;
+            font-weight: bold;
+            color: #f5dd25;
+            text-shadow: 0 0 10px white;
+        }
+        .not-found-page p {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        .not-found-page a:hover {
+            border-bottom: none;
+        }
+        /* Guessing game styles */
+        #guess-game-container {
+            max-width: 400px;
+            margin: 20px auto; /* Adjusted margin */
+        }
+
+        #guess-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        #guess-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #result-message {
+            margin-top: 20px;
+        }
+        /* Cheese animation */
+        .cheese {
+            position: absolute;
+            animation: dance 5s infinite;
+            z-index: -1; 
+        }
+        @keyframes dance {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-20px) rotate(-10deg); }
+            50% { transform: translateX(20px) rotate(10deg); }
+            75% { transform: translateX(-10px) rotate(5deg); }
+            100% { transform: translateX(10px) rotate(-5deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="not-found-page">
+        <h1>404: Not A GOUDA Guess</h1>
+        <p>The page you are looking for is like a hidden number between 1 and 10.</p>
+    </div>
+
+    <!-- Guessing game section -->
+    <div id="guess-game-container">
+        <p>Can you guess the correct number between 1 and 10?</p>
+        <input type="number" id="guess-input" placeholder="Enter your guess">
+        <button id="guess-btn" onclick="checkGuess()">Guess</button>
+        <p id="result-message"></p>
+    </div>
+
+    <!-- Dancing gouda cheeses -->
+    <img src="../assets/images/gouda-removebg-preview.png" alt="Dancing Gouda Cheese" class="cheese" style="top: 10%; left: 20%;">
+    <img src="../assets/images/gouda-removebg-preview.png" alt="Dancing Gouda Cheese" class="cheese" style="top: 50%; left: 50%;">
 </body>
-
-
-
-
+</html>
