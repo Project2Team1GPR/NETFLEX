@@ -140,9 +140,9 @@ This is an example of how to list things you need to use the software and how to
 
 ## Usage
 
-### Walkthrough Video
+### Walkthrough Video Link
 
-[![NETFLEX Walktrhough Video](./assets/images/screenshot.png)](https://project2-team1-netflex.onrender.com/)
+[![NETFLEX Walktrhough Video](./assets/images/screenshot.png)](https://drive.google.com/file/d/1R8ZOLP7-sVr11JwljyLsAtEUaeb9ks5Z/view)
 
 
 
